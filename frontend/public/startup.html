@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Recommendation - Starting...</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .container { text-align: center; color: white; }
+        h1 { font-size: 32px; margin-bottom: 20px; }
+        p { font-size: 18px; margin: 10px 0; }
+        .spinner { border: 4px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 4px solid white; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Food Recommendation System</h1>
+        <p>Initializing...</p>
+        <div class="spinner"></div>
+        <p>Please wait while we start the application...</p>
+    </div>
+    <script>
+        // Check if API is responding every 2 seconds
+        const checkAPI = setInterval(() => {
+            fetch('http://localhost:5000/api/health')
+                .then(r => {
+                    if (r.ok) {
+                        clearInterval(checkAPI);
+                        // Check if frontend is ready by trying to access root
+                        setTimeout(() => {
+                            window.location.href = 'http://localhost:3000';
+                        }, 1000);
+                    }
+                })
+                .catch(() => {
+                    // API not ready yet
+                });
+        }, 2000);
+        
+        // Timeout after 60 seconds
+        setTimeout(() => {
+            clearInterval(checkAPI);
+            document.body.innerHTML = '<div class="container"><h1>Error</h1><p>Application failed to start. Please check the terminal for errors.</p></div>';
+        }, 60000);
+    </script>
+</body>
+</html>

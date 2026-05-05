@@ -1,0 +1,23 @@
+/* Chart Styles */
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: var(--spacing-lg) 0;
+  background: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+.chart-container canvas {
+  max-height: 400px;
+}
+
+/* Responsive Charts */
+@media (max-width: 768px) {
+  .chart-container {
+    height: 300px;
+  }
+}

@@ -1,0 +1,391 @@
+/* Restaurant Map Component Styles */
+
+.restaurant-map-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+.map-header {
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: var(--spacing-md);
+}
+
+.map-header h2 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+.map-header p {
+  color: var(--text-light);
+}
+
+/* Map Canvas */
+.map-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+}
+
+.zoom-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-color);
+  background: white;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--primary-color);
+}
+
+.zoom-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.zoom-level {
+  color: var(--text-light);
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+}
+
+/* Map Canvas Container */
+.map-canvas {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+  overflow: hidden;
+}
+
+.map-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.markers-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Marker Styling */
+.marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.marker:hover .marker-icon {
+  transform: scale(1.3) rotate(15deg);
+}
+
+.marker.selected .marker-icon {
+  transform: scale(1.4);
+  filter: brightness(1.2);
+  animation: pulse 0.5s ease-out;
+}
+
+.marker-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.8rem;
+  background: white;
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1.4);
+  }
+}
+
+/* Info Panel */
+.info-panel {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: 100%;
+  max-width: 350px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.info-header {
+  background: linear-gradient(135deg, var(--primary-color), #3182ce);
+  color: white;
+  padding: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.info-content {
+  padding: var(--spacing-md);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.thumbnail-section {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #3182ce 100%);
+  border-radius: var(--border-radius);
+}
+
+.large-thumbnail {
+  font-size: 3rem;
+  line-height: 1;
+  animation: float 2s ease-in-out infinite;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.info-row:last-of-type {
+  border-bottom: none;
+}
+
+.info-row label {
+  font-weight: 600;
+  color: var(--text-dark);
+  min-width: 100px;
+}
+
+.info-row span {
+  color: var(--text-light);
+  text-align: right;
+  flex: 1;
+}
+
+.info-row span.available {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.info-row span.unavailable {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+.info-address {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background: var(--light-bg);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* List View */
+.list-view {
+  border-top: 2px solid var(--border-color);
+  padding-top: var(--spacing-lg);
+}
+
+.list-view h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+}
+
+.restaurant-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.list-item {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  border-left: 4px solid var(--primary-color);
+}
+
+.list-item:hover {
+  background: #e8f4f8;
+  transform: translateX(5px);
+}
+
+.list-thumbnail {
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.list-info {
+  flex: 1;
+}
+
+.list-info h4 {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.list-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.list-info p:first-of-type {
+  margin-bottom: var(--spacing-xs);
+}
+
+.delivery-badge {
+  display: inline-block;
+  background: var(--secondary-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.list-more {
+  padding: var(--spacing-md);
+  text-align: center;
+  color: var(--text-light);
+  font-style: italic;
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+}
+
+/* Scrollbar Styling */
+.restaurant-list::-webkit-scrollbar,
+.info-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.restaurant-list::-webkit-scrollbar-track,
+.info-content::-webkit-scrollbar-track {
+  background: var(--light-bg);
+  border-radius: 3px;
+}
+
+.restaurant-list::-webkit-scrollbar-thumb,
+.info-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.restaurant-list::-webkit-scrollbar-thumb:hover,
+.info-content::-webkit-scrollbar-thumb:hover {
+  background: #3182ce;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .restaurant-map-container {
+    padding: var(--spacing-md);
+  }
+
+  .map-canvas {
+    height: 400px;
+  }
+
+  .info-panel {
+    max-width: 100%;
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+  }
+
+  .marker-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4rem;
+    border-width: 2px;
+  }
+}

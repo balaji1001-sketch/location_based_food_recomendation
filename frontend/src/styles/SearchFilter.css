@@ -1,0 +1,313 @@
+/* Search Filter Styles */
+
+.search-filter {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8ecf1;
+}
+
+.search-filter h3 {
+  margin-bottom: 1.75rem;
+  color: #1a202c;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-filter h3::before {
+  content: '🎯';
+  font-size: 1.4rem;
+}
+
+.filter-group {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.filter-group:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+
+/* Location Filter */
+.filter-group:nth-child(2) {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.02) 100%);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  margin-bottom: 2rem;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.875rem;
+  font-weight: 700;
+  color: #2d3748;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-label::before {
+  font-size: 1.1rem;
+}
+
+/* Location label */
+.filter-group:nth-child(2) .filter-label::before {
+  content: '📍';
+}
+
+/* Food label */
+.filter-group:nth-child(3) .filter-label::before {
+  content: '🍲';
+}
+
+/* Budget label */
+.filter-group:nth-child(4) .filter-label::before {
+  content: '💰';
+}
+
+/* Sort label */
+.filter-group:nth-child(5) .filter-label::before {
+  content: '↕️';
+}
+
+.filter-input,
+.filter-select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: #f9fafb;
+}
+
+.filter-input::placeholder {
+  color: #a0aec0;
+}
+
+.cuisine-options,
+.budget-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.food-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.food-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.food-options::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.food-options::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.food-options::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+.food-checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #4a5568;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: white;
+  text-align: center;
+  flex-direction: column;
+}
+
+.food-checkbox-label input {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: #667eea;
+}
+
+.food-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.food-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.food-checkbox-label:hover {
+  border-color: #cbd5e0;
+  background: #f7fafc;
+  transform: translateY(-2px);
+}
+
+.food-checkbox-label input:checked + span + span,
+.food-checkbox-label input:checked + .food-emoji,
+.food-checkbox-label input:checked + .food-emoji + .food-name {
+  color: #667eea;
+}
+
+.food-checkbox-label input:checked ~ .food-name {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.food-checkbox-label input:checked {
+  accent-color: #667eea;
+}
+
+.food-checkbox-label input:checked {
+  border-color: #667eea;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(102, 126, 234, 0.02) 100%);
+}
+
+.checkbox-label,
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #4a5568;
+  padding: 0.5rem 0;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label input,
+.radio-label input {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: #667eea;
+}
+
+.checkbox-label:hover,
+.radio-label:hover {
+  color: #2d3748;
+}
+
+/* Search Filter Button */
+.search-filter .btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-filter .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.search-filter .btn:active {
+  transform: translateY(0);
+}
+
+/* Search Filter Button - Secondary */
+.search-filter .btn-secondary {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.search-filter .btn-secondary:hover {
+  background: #cbd5e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-filter {
+    padding: 1.5rem 1rem;
+  }
+
+  .filter-group {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .food-options {
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 250px;
+  }
+
+  .food-checkbox-label {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  .food-emoji {
+    font-size: 1.25rem;
+  }
+
+  .food-name {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-filter {
+    padding: 1rem;
+  }
+
+  .search-filter h3 {
+    font-size: 1.1rem;
+  }
+
+  .filter-label {
+    font-size: 0.9rem;
+  }
+
+  .food-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
